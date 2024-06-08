@@ -5,6 +5,7 @@ const cryptoJs = require('crypto-js')
 const uuid = require('uuid')
 const mailer = require('../mailer')
 const router = express.Router()
+const jwt = require('jsonwebtoken')
 
 
 router.post('/signup',(request,response) => {
@@ -59,8 +60,11 @@ router.post('/signin',(request,response) => {
                             }
                             else if(user['active'] == 1)
                             {
+                                const authToken = jwt.sign({id: user['id']}, '79098ujbvfhmmn')
                                 result['status'] = 'success'
-                                result['data'] = user
+                                result['data'] = {
+                                    name: user['name'],
+                                authToken: authToken}
                             }
                     }
             }
