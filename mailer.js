@@ -9,7 +9,7 @@ function sendEmail(email,subject, body, callback){
         service:'gmail',
         auth:{
             user:'pragati.mane.161099@gmail.com',
-            pass: 'wpag qwld llqz rymc'
+            pass: '**** **** **** ****'
         }
     })
 transport.sendMail({
